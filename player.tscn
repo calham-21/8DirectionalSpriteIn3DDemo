@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfyfbuagf65oe"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_kc7t1"]
+[ext_resource type="Texture2D" uid="uid://ckvl17q85ws4b" path="res://player_spr.png" id="2_tytv2"]
+[ext_resource type="Texture2D" uid="uid://hyc8m8npdyuu" path="res://icon.svg" id="3_dgdi8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j62u7"]
+atlas = ExtResource("2_tytv2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7cio"]
+atlas = ExtResource("2_tytv2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12d0k"]
+atlas = ExtResource("2_tytv2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn7j6"]
+atlas = ExtResource("2_tytv2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewg4x"]
+atlas = ExtResource("2_tytv2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n7h0c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j62u7")
+}],
+"loop": true,
+"name": &"IdleB",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7cio")
+}],
+"loop": true,
+"name": &"IdleF",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12d0k")
+}],
+"loop": true,
+"name": &"IdleFB",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn7j6")
+}],
+"loop": true,
+"name": &"IdleFL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewg4x")
+}],
+"loop": true,
+"name": &"IdleL",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_kc7t1")
+
+[node name="SpriteBase" type="Node3D" parent="."]
+
+[node name="PlayerSprite" type="AnimatedSprite3D" parent="SpriteBase"]
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_n7h0c")
+animation = &"IdleB"
+
+[node name="Front" type="Marker3D" parent="SpriteBase/PlayerSprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.289835)
+
+[node name="FrontSpriteMarker" type="Sprite3D" parent="SpriteBase/PlayerSprite/Front"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+texture = ExtResource("3_dgdi8")
+
+[node name="CameraBase" type="Node3D" parent="."]
+
+[node name="SpringArm" type="SpringArm3D" parent="CameraBase"]
+spring_length = 2.0
+
+[node name="Camera" type="Camera3D" parent="CameraBase/SpringArm"]
