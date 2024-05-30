@@ -1,0 +1,2 @@
+# 8DirectionalSpriteIn3DDemo
+ 
