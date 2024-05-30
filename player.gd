@@ -1,3 +1,7 @@
+##Demo Scene of a 8 directional sprite character in 3D.
+##Detailed explaination of processes are down below
+
+
 extends CharacterBody3D
 
 #Sprite References
@@ -38,6 +42,7 @@ func _physics_process(delta: float) -> void:
 	sprite_rotation()
 
 func sprite_rotation():
+	
 	#These variables are for animation snyc, for example:
 	#A run anim is playing, 12 frames long, if direction changes from F to FL,
 	#Anim does not reset back to frame 0, but continues to next frame.
@@ -67,6 +72,7 @@ func sprite_rotation():
 	
 	#current_state can be changed based on what state the player is in, eg: idle, Run, Jump, then
 	#in here that animation will play, (if it exists).
+	
 	
 	
 	##Behind direction
