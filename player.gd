@@ -57,7 +57,7 @@ func sprite_rotation():
 	#This can be used to determine the direction of the sprite.
 	var l_dot = left.dot(c_fwd)
 	var f_dot = fwd.dot(c_fwd)
-	
+	print(f_dot)
 	sprite.flip_h = false
 	
 	#This is the actual script that determines the direction of the sprite relative to the camera.

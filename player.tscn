@@ -8,13 +8,13 @@
 atlas = ExtResource("2_tytv2")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e7cio"]
-atlas = ExtResource("2_tytv2")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_12d0k"]
 atlas = ExtResource("2_tytv2")
 region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7cio"]
+atlas = ExtResource("2_tytv2")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qn7j6"]
 atlas = ExtResource("2_tytv2")
@@ -36,18 +36,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e7cio")
+"texture": SubResource("AtlasTexture_12d0k")
 }],
 "loop": true,
-"name": &"IdleF",
+"name": &"IdleBL",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_12d0k")
+"texture": SubResource("AtlasTexture_e7cio")
 }],
 "loop": true,
-"name": &"IdleFB",
+"name": &"IdleF",
 "speed": 5.0
 }, {
 "frames": [{
@@ -81,7 +81,7 @@ script = ExtResource("1_kc7t1")
 billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_n7h0c")
-animation = &"IdleB"
+animation = &"IdleBL"
 
 [node name="Front" type="Marker3D" parent="SpriteBase/PlayerSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.289835)
