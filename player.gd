@@ -15,10 +15,10 @@ extends CharacterBody3D
 @onready var camera: Camera3D = $CameraBase/SpringArm/Camera
 
 
-##Current state of character
+##Current state of character.
 @export var current_state : StringName
-##Camera's Sensitivity
-@export var sens : float = 0.2
+##Camera's Sensitivity.
+@export var sens : float = 0.1
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
@@ -32,7 +32,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		camera_base.rotate_y(deg_to_rad(-event.relative.x * sens))
 		spring_arm.rotate_x(deg_to_rad(-event.relative.y * sens))
-		spring_arm.rotation.x = clamp(spring_arm.rotation.x, deg_to_rad(-90), deg_to_rad(45))
+		spring_arm.rotation.x = clamp(spring_arm.rotation.x, deg_to_rad(-60), deg_to_rad(45))
 
 func _physics_process(delta: float) -> void:
 	#Esc to quit 
@@ -42,7 +42,8 @@ func _physics_process(delta: float) -> void:
 	sprite_rotation()
 
 func sprite_rotation():
-	
+	#Get current active camera
+	var current_camera = get_viewport().get_camera_3d()
 	#These variables are for animation snyc, for example:
 	#A run anim is playing, 12 frames long, if direction changes from F to FL,
 	#Anim does not reset back to frame 0, but continues to next frame.
@@ -54,6 +55,9 @@ func sprite_rotation():
 	#the sprite. 
 	#The left var is to check when to flip the sprite
 	var c_fwd = -camera.global_transform.basis.z
+	#Normalize the y component so that vertical (up and down) movement doesnt affect the dot products
+	c_fwd.y = 0
+	c_fwd = c_fwd.normalized() 
 	var fwd = -front.global_transform.basis.z
 	var left = sprite.global_transform.basis.x
 	

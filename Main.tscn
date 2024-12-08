@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://y67l6k5qhcec"]
+
+[ext_resource type="PackedScene" uid="uid://cfyfbuagf65oe" path="res://player.tscn" id="1_7t2ae"]
+[ext_resource type="Texture2D" uid="uid://hyc8m8npdyuu" path="res://icon.svg" id="2_evqvm"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_tpgjp"]
+panorama = ExtResource("2_evqvm")
+
+[sub_resource type="Sky" id="Sky_6hux1"]
+sky_material = SubResource("PanoramaSkyMaterial_tpgjp")
+
+[sub_resource type="Environment" id="Environment_vbic8"]
+background_mode = 2
+sky = SubResource("Sky_6hux1")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_7t2ae")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vbic8")

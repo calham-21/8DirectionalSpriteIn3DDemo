@@ -93,6 +93,6 @@ texture = ExtResource("3_dgdi8")
 [node name="CameraBase" type="Node3D" parent="."]
 
 [node name="SpringArm" type="SpringArm3D" parent="CameraBase"]
-spring_length = 2.0
+spring_length = 1.2
 
 [node name="Camera" type="Camera3D" parent="CameraBase/SpringArm"]
